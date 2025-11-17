@@ -12,7 +12,7 @@ export default function Home() {
           <div>
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 text-xs text-gray-600 dark:text-slate-300">
               <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-              <span className="font-medium tracking-wide">HelaSub</span>
+              <span className="font-medium tracking-wide">HelaSubLk</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 dark:text-slate-50 mb-3">
               Subtitle Converter
@@ -85,4 +85,5 @@ function FeatureCard({ icon, title, description }) {
   )
 
 }
+
 
