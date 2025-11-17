@@ -18,7 +18,7 @@ export default function Home() {
               Subtitle Converter
             </h1>
             <p className="text-sm md:text-base text-gray-600 dark:text-slate-400 max-w-xl leading-relaxed">
-              Upload your subtitle file and get a quality Sinhala version in seconds. No complicated setup just smooth, accurate translations that preserve timing, formatting, and readability for any video project.
+              Upload your subtitle file and get a quality Sinhala version in seconds.
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end gap-2 text-xs text-gray-500 dark:text-slate-500">
@@ -85,3 +85,4 @@ function FeatureCard({ icon, title, description }) {
   )
 
 }
+
