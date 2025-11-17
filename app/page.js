@@ -12,25 +12,24 @@ export default function Home() {
           <div>
             <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 text-xs text-gray-600 dark:text-slate-300">
               <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-              <span className="font-medium tracking-wide">AI Sinhala Subtitle Studio</span>
+              <span className="font-medium tracking-wide">HelaSub</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 dark:text-slate-50 mb-3">
               Subtitle Converter
             </h1>
             <p className="text-sm md:text-base text-gray-600 dark:text-slate-400 max-w-xl leading-relaxed">
-              A focused, minimal workspace to transform your English subtitles into natural Sinhala,
-              powered by advanced AI translation.
+              Upload your subtitle file and get a quality Sinhala version in seconds. No complicated setup just smooth, accurate translations that preserve timing, formatting, and readability for any video project.
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end gap-2 text-xs text-gray-500 dark:text-slate-500">
             <div className="flex items-center gap-2">
               <span className="uppercase tracking-[0.18em]">
-                Today
+                Mode
               </span>
               <DarkModeToggle />
             </div>
             <span className="pill-soft">
-              Clean • Quiet • Precise
+              English to Sinhala Translation
             </span>
           </div>
         </header>
@@ -84,4 +83,5 @@ function FeatureCard({ icon, title, description }) {
       </p>
     </div>
   )
+
 }
