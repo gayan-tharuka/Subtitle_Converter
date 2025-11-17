@@ -5,16 +5,45 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 222 84% 5%;
+    --accent: 199 89% 48%;
+    --accent-soft: 210 40% 96%;
+    --border-subtle: 214 32% 91%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 15% 8%;
     --foreground: 210 40% 98%;
+    --accent: 210 100% 60%;
+    --accent-soft: 220 18% 15%;
+    --border-subtle: 220 18% 22%;
   }
 
   body {
-    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen;
+    @apply min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-slate-100 antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  main {
+    @apply min-h-screen;
+  }
+
+  * {
+    @apply outline-none;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/80 dark:bg-slate-900/70 backdrop-blur-xl border border-gray-200/60 dark:border-slate-700/60 shadow-lg;
+  }
+
+  .card-soft {
+    @apply bg-white dark:bg-slate-900/80 border border-gray-200 dark:border-slate-700/70 rounded-2xl shadow-sm;
+  }
+
+  .pill-soft {
+    @apply rounded-full border border-gray-200 dark:border-slate-700/70 bg-gray-50 dark:bg-slate-900/80 text-xs font-medium text-gray-600 dark:text-slate-300 px-3 py-1;
   }
 }
 
@@ -22,25 +51,21 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  .glass-effect {
-    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
-  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-gray-100 dark:bg-slate-950;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+  @apply bg-gray-300 dark:bg-slate-700 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  @apply bg-gray-400 dark:bg-slate-500;
 }

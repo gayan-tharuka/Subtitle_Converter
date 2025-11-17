@@ -40,7 +40,7 @@ export default function ProgressBar({ progressData = {} }) {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <span className="text-sm font-medium text-gray-700">
+        <span className="text-sm font-medium text-gray-900 dark:text-gray-100">
           Translation Progress
         </span>
         <span className="text-sm font-semibold text-blue-600">
@@ -48,44 +48,44 @@ export default function ProgressBar({ progressData = {} }) {
         </span>
       </div>
 
-      <div className="relative h-3 bg-gray-200 rounded-full overflow-hidden">
+      <div className="relative h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full"
+          className="absolute top-0 left-0 h-full bg-blue-500 rounded-full"
         />
-        
+
         {/* Animated shimmer effect */}
         {progress < 100 && (
           <motion.div
             animate={{ x: ['-100%', '100%'] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/50 to-transparent"
           />
         )}
       </div>
 
       <div className="flex items-center justify-between text-sm">
-        <div className="flex items-center gap-2 text-gray-600">
+        <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
           <Loader2 className="w-4 h-4 animate-spin text-blue-500" />
           <span className="max-w-[250px] truncate">{message || 'Processing...'}</span>
         </div>
-        
+
         <div className="flex items-center gap-3">
           {timeDisplay && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-1 text-gray-500 bg-gray-50 px-2 py-1 rounded"
+              className="flex items-center gap-1 text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-800 px-2 py-1 rounded"
             >
               <Clock className="w-3.5 h-3.5" />
               <span className="text-xs font-medium">{timeDisplay}</span>
             </motion.div>
           )}
-          
+
           {total > 0 && (
-            <span className="text-xs font-mono bg-blue-50 text-blue-700 px-2 py-1 rounded border border-blue-200">
+            <span className="text-xs font-mono bg-blue-50 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-2 py-1 rounded border border-blue-200 dark:border-blue-700">
               {current}/{total}
             </span>
           )}
@@ -93,7 +93,7 @@ export default function ProgressBar({ progressData = {} }) {
       </div>
 
       {/* Progress stages indicator */}
-      <div className="flex items-center justify-between text-xs text-gray-400 px-1">
+      <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 px-1">
         <span className={progress >= 10 ? 'text-green-600 font-medium' : ''}>
           {progress < 10 ? '⏳' : '✓'} Upload
         </span>

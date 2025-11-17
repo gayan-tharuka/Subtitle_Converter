@@ -84,22 +84,22 @@ export default function SubtitleConverter() {
   }
 
   return (
-    <div className="glass-effect rounded-3xl p-8 shadow-2xl">
+    <div className="glass-effect rounded-3xl p-6 md:p-8">
       {/* API Status Banner */}
       {apiStatus === 'offline' && (
-        <div className="mb-6 flex items-start gap-3 p-4 bg-yellow-50 border border-yellow-200 rounded-xl">
-          <WifiOff className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
+        <div className="mb-6 flex items-start gap-3 p-4 rounded-2xl border border-amber-200 dark:border-amber-500/40 bg-amber-50 dark:bg-amber-950/40">
+          <WifiOff className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
           <div>
-            <p className="font-medium text-yellow-800">Translation Service Offline</p>
-            <p className="text-sm text-yellow-600 mt-1">
+            <p className="font-medium text-amber-800 dark:text-amber-100">Translation service offline</p>
+            <p className="text-xs text-amber-700 dark:text-amber-200/80 mt-1">
               Cannot connect to the API. Please check:
             </p>
-            <ul className="text-sm text-yellow-600 mt-2 ml-4 list-disc">
+            <ul className="text-xs text-amber-700 dark:text-amber-200/80 mt-2 ml-4 list-disc space-y-0.5">
               <li>Your HuggingFace Space is running</li>
               <li>API URL is correct in .env.local</li>
               <li>CORS is enabled on the backend</li>
             </ul>
-            <p className="text-xs text-yellow-500 mt-2 font-mono">
+            <p className="text-[11px] text-amber-600 dark:text-amber-300/80 mt-2 font-mono">
               API URL: {process.env.NEXT_PUBLIC_API_URL || 'Not configured'}
             </p>
           </div>
@@ -107,9 +107,13 @@ export default function SubtitleConverter() {
       )}
 
       {apiStatus === 'online' && (
-        <div className="mb-6 flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-xl">
-          <CheckCircle2 className="w-4 h-4 text-green-600" />
-          <p className="text-sm text-green-700">Translation service is online and ready</p>
+        <div className="mb-6 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-green-50 dark:bg-emerald-900/40 border border-green-200 dark:border-emerald-500/40 text-xs text-green-800 dark:text-emerald-100">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 dark:bg-emerald-400 opacity-70" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500 dark:bg-emerald-400" />
+          </span>
+          <CheckCircle2 className="w-3.5 h-3.5" />
+          <p className="text-[11px] tracking-wide">Translation service is online</p>
         </div>
       )}
 
@@ -132,11 +136,11 @@ export default function SubtitleConverter() {
             className="space-y-6"
           >
             {/* File Info */}
-            <div className="flex items-center gap-4 p-4 bg-blue-50 rounded-xl border border-blue-200">
-              <FileText className="w-8 h-8 text-blue-600" />
+            <div className="flex items-center gap-4 p-4 rounded-2xl border border-gray-200 dark:border-slate-700/70 bg-white dark:bg-slate-900/80">
+              <FileText className="w-8 h-8 text-gray-600 dark:text-slate-200" />
               <div className="flex-1">
-                <p className="font-medium text-gray-800">{file.name}</p>
-                <p className="text-sm text-gray-500">
+                <p className="font-medium text-gray-900 dark:text-slate-100 text-sm md:text-base">{file.name}</p>
+                <p className="text-xs md:text-sm text-gray-500 dark:text-slate-400">
                   {(file.size / 1024).toFixed(2)} KB
                 </p>
               </div>
@@ -144,11 +148,13 @@ export default function SubtitleConverter() {
 
             {/* Settings */}
             <div className="space-y-4">
-              <h3 className="font-semibold text-gray-800">Translation Settings</h3>
-              
+              <h3 className="font-medium text-gray-900 dark:text-slate-100 text-sm md:text-base">
+                Translation settings
+              </h3>
+
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm text-gray-700">
+                  <label className="text-xs md:text-sm text-gray-700 dark:text-slate-300">
                     Batch Size: {settings.batchSize}
                   </label>
                   <input
@@ -161,12 +167,12 @@ export default function SubtitleConverter() {
                       setSettings({ ...settings, batchSize: parseInt(e.target.value) })
                     }
                     disabled={isTranslating}
-                    className="w-48 accent-blue-600"
+                    className="w-40 md:w-48 accent-blue-500"
                   />
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <label className="text-sm text-gray-700">
+                  <label className="text-xs md:text-sm text-gray-700 dark:text-slate-300">
                     Fast Mode (lower quality)
                   </label>
                   <button
@@ -175,7 +181,7 @@ export default function SubtitleConverter() {
                     }
                     disabled={isTranslating}
                     className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                      settings.fastMode ? 'bg-blue-600' : 'bg-gray-300'
+                      settings.fastMode ? 'bg-blue-500' : 'bg-gray-300 dark:bg-slate-700'
                     } ${isTranslating ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <span
@@ -198,12 +204,12 @@ export default function SubtitleConverter() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded-xl"
+                className="flex items-start gap-3 p-4 rounded-2xl border border-red-200 dark:border-red-500/35 bg-red-50 dark:bg-red-950/40"
               >
-                <AlertCircle className="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0" />
+                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-300 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <p className="font-medium text-red-800">Translation Failed</p>
-                  <p className="text-sm text-red-600 mt-1 whitespace-pre-wrap">{error}</p>
+                  <p className="font-medium text-red-800 dark:text-red-50 text-sm">Translation failed</p>
+                  <p className="text-xs text-red-700 dark:text-red-200 mt-1 whitespace-pre-wrap">{error}</p>
                 </div>
               </motion.div>
             )}
@@ -213,12 +219,12 @@ export default function SubtitleConverter() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex items-start gap-3 p-4 bg-green-50 border border-green-200 rounded-xl"
+                className="flex items-start gap-3 p-4 rounded-2xl border border-green-200 dark:border-emerald-500/40 bg-green-50 dark:bg-emerald-950/40"
               >
-                <CheckCircle2 className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-emerald-300 mt-0.5 flex-shrink-0" />
                 <div className="flex-1">
-                  <p className="font-medium text-green-800">Translation Complete! 🎉</p>
-                  <p className="text-sm text-green-600 mt-1">
+                  <p className="font-medium text-green-800 dark:text-emerald-50 text-sm">Translation complete</p>
+                  <p className="text-xs text-green-700 dark:text-emerald-200 mt-1">
                     Your Sinhala subtitle file is ready for download
                   </p>
                 </div>
@@ -226,20 +232,20 @@ export default function SubtitleConverter() {
             )}
 
             {/* Action Buttons */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-col md:flex-row gap-3 pt-4">
               {!translatedFile ? (
                 <>
                   <button
                     onClick={handleTranslate}
                     disabled={isTranslating || apiStatus === 'offline'}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-xl font-medium hover:from-blue-700 hover:to-indigo-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                    className="flex-1 bg-blue-500 text-white py-3 px-6 rounded-2xl font-medium hover:bg-blue-600 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
                   >
                     {isTranslating ? 'Translating...' : 'Start Translation'}
                   </button>
                   <button
                     onClick={handleReset}
                     disabled={isTranslating}
-                    className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-6 py-3 rounded-2xl border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-200 font-medium hover:bg-gray-50 dark:hover:bg-slate-900/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Cancel
                   </button>
@@ -249,7 +255,7 @@ export default function SubtitleConverter() {
                   <DownloadButton file={translatedFile} filename={`sinhala_${file.name}`} />
                   <button
                     onClick={handleReset}
-                    className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-xl font-medium hover:bg-gray-50 transition-colors"
+                    className="px-6 py-3 rounded-2xl border border-gray-300 dark:border-slate-700/80 text-gray-700 dark:text-slate-200 font-medium hover:bg-gray-50 dark:hover:bg-slate-900/80 transition-colors"
                   >
                     Convert Another
                   </button>
