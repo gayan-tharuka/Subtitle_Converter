@@ -34,9 +34,7 @@ export default function Home() {
 
             {/* Description paragraph */}
             <p className="text-sm md:text-base text-gray-600 dark:text-slate-400 max-w-3xl leading-relaxed mb-6">
-              Upload your subtitle file and get a quality Sinhala version in seconds. 
-              No complicated setup just smooth, accurate translations that preserve timing, 
-              formatting, and readability for any video project.
+              Upload your English subtitle file and get a quality Sinhala version in seconds. 
             </p>
 
             {/* Centered "English to Sinhala Translation" pill */}
@@ -103,4 +101,5 @@ function FeatureCard({ icon, title, description }) {
       </p>
     </div>
   )
+
 }
