@@ -8,29 +8,49 @@ export default function Home() {
     <main className="flex-1 py-10 px-4 md:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <header className="mb-12 md:mb-16 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 text-xs text-gray-600 dark:text-slate-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
-              <span className="font-medium tracking-wide">HelaSubLk</span>
+        <header className="mb-12 md:mb-6">
+          <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+
+            {/* Top row: HelaSubLk left + Mode right */}
+            <div className="flex items-center justify-between mb-6">
+              {/* Left: HelaSubLk badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gray-200 dark:border-slate-700 bg-gray-50 dark:bg-slate-900 text-xs text-gray-600 dark:text-slate-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                <span className="font-medium tracking-wide">HelaSubLk</span>
+              </div>
+
+              {/* Right: Mode toggle only */}
+              <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-500">
+                <span className="uppercase tracking-[0.18em]">Mode</span>
+                <DarkModeToggle />
+                
+              </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-900 dark:text-slate-50 mb-3">
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-gray-500 dark:text-slate-50 mb-4">
               Subtitle Converter
             </h1>
-            <p className="text-sm md:text-base text-gray-600 dark:text-slate-400 max-w-xl leading-relaxed">
-              Upload your subtitle file and get a quality Sinhala version in seconds.
+
+            {/* Description paragraph */}
+            <p className="text-sm md:text-base text-gray-600 dark:text-slate-400 max-w-3xl leading-relaxed mb-6">
+              Upload your subtitle file and get a quality Sinhala version in seconds. 
+              No complicated setup just smooth, accurate translations that preserve timing, 
+              formatting, and readability for any video project.
             </p>
-          </div>
-          <div className="flex flex-col items-start md:items-end gap-2 text-xs text-gray-500 dark:text-slate-500">
-            <div className="flex items-center gap-2">
-              <span className="uppercase tracking-[0.18em]">
-                Mode
-              </span>
-              <DarkModeToggle />
-            </div>
-            <span className="pill-soft">
+
+            {/* Centered "English to Sinhala Translation" pill */}
+            <div className="flex justify-center mb-4">  {/* reduced from mb-6 or more */}
+          <span className={`
+              inline-block px-6 py-2 rounded-full text-sm font-medium shadow-lg
+              /* Light mode – exact colors from your screenshot */
+              bg-gray-100 text-blue-600 border border-gray-300
+              /* Dark mode – keeps the original dark look */
+              dark:bg-slate-800 dark:text-blue-300 dark:border-slate-700
+            `}>
               English to Sinhala Translation
             </span>
+            </div>
           </div>
         </header>
 
@@ -83,7 +103,4 @@ function FeatureCard({ icon, title, description }) {
       </p>
     </div>
   )
-
 }
-
-
